@@ -1,0 +1,17 @@
+include ../components/helpers/_variables
+include ../components/helpers/_mixins
+
+doctype html
+html(lang="en")
+    block head
+        //- STYLES AND SCRIPTS
+        include ../includes/_head
+    block body
+        body 
+            div.container-fluid 
+                block header
+                block content
+                    div.content-container
+                block footer
+            //- STYLES AND SCRIPTS
+            include ../includes/_foot
