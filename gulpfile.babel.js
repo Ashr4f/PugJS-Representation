@@ -23,7 +23,9 @@ const server = new StaticServer({
 });
 
 task("copy-server-files", done => {
-    src("./src/!(pug|scss|css|js)**/*", {base: "./src"})
+    src(["./src/!(pug|scss|css|js)**/*", "./src/!(pug|scss|css|js)**"], {
+        base: "./src",
+    })
         .pipe(plumber())
         .pipe(dest("./dist/"))
         .pipe(glr());
