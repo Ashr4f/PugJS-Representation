@@ -1,0 +1,246 @@
+@charset "UTF-8";
+
+// LOAD FONTS
+/* 
+// FONTNAME
+@include font("font-name", "./path/to/folder", ttf eot woff2 woff svg); */
+
+*::selection {
+    background: $selection-background-color;
+    color: $selection-color;
+}
+
+*::-moz-selection {
+    background: $selection-background-color;
+    color: $selection-color;
+}
+
+html,
+body {
+    height: 100%;
+    max-height: 100%;
+}
+
+html {
+    position: relative;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-size: rem(16);
+    font-family: $mainFont;
+    color: $main-font-color;
+    background-color: $main-background-color;
+}
+
+.hide {
+    display: none;
+}
+
+input,
+select,
+a,
+i,
+button {
+    -webkit-tap-highlight-color: rgba($black, 0);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+ul,
+ol,
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+span,
+p,
+a,
+strong,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    padding: 0;
+    margin: 0;
+
+    &.extra-bold {
+        font-family: $mainFont_ExtraBold;
+        font-weight: 900;
+    }
+
+    &.bold {
+        font-family: $mainFont_Bold;
+        font-weight: 900;
+    }
+
+    &.semi-bold {
+        font-family: $mainFont_SemiBold;
+        font-weight: 900;
+    }
+
+    &.light {
+        font-family: $mainFont_Light;
+    }
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    color: $black;
+}
+
+.no-select,
+img {
+    -webkit-touch-callout: none;
+    @include prefixer(user-select, none, webkit khtml moz o ms);
+}
+
+img {
+    display: block;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.no-transition {
+    @include prefixer(transition, none !important, webkit moz o ms);
+}
+
+.break-long-words {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    @include prefixer(hyphens, auto, webkit moz ms);
+}
+
+.overflow-y-hidden {
+    overflow-y: hidden;
+}
+
+.overflow-x-hidden {
+    overflow-x: hidden;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.align-left {
+    text-align: $left !important;
+}
+
+.align-right {
+    text-align: $right !important;
+}
+
+.align-center {
+    text-align: center !important;
+}
+
+.align-middle {
+    vertical-align: middle;
+}
+
+.clearfix {
+    @include clearfix();
+}
+
+.float-#{$left} {
+    float: #{$left};
+}
+
+.float-#{$right} {
+    float: #{$right};
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.block {
+    display: block;
+}
+
+@media screen and (max-width: $screen-xs-max) {
+    .xs-hide {
+        display: none;
+    }
+
+    .xs-show {
+        display: initial;
+    }
+
+    .xs-float-left {
+        float: #{$left};
+    }
+
+    .xs-float-right {
+        float: #{$right};
+    }
+}
+
+@media screen and (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
+    .sm-hide {
+        display: none;
+    }
+
+    .sm-show {
+        display: initial;
+    }
+
+    .sm-float-left {
+        float: #{$left};
+    }
+
+    .sm-float-right {
+        float: #{$right};
+    }
+}
+
+@media screen and (min-width: $screen-sm-max) and (max-width: $screen-md-max) {
+    .md-hide {
+        display: none;
+    }
+
+    .md-show {
+        display: initial;
+    }
+
+    .md-float-left {
+        float: #{$left};
+    }
+
+    .md-float-right {
+        float: #{$right};
+    }
+}
+
+@media screen and (min-width: $screen-md-max) {
+    .lg-hide {
+        display: none;
+    }
+
+    .lg-show {
+        display: initial;
+    }
+
+    .lg-float-left {
+        float: #{$left};
+    }
+
+    .lg-float-right {
+        float: #{$right};
+    }
+}

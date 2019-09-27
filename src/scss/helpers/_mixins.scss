@@ -1,0 +1,219 @@
+@mixin clearfix($extend: true) {
+    @if $extend==true {
+        @extend %clearfix;
+    } @else if $extend==false {
+        &::before,
+        &::after {
+            content: "\0020";
+            display: block;
+            height: 0;
+            overflow: hidden;
+        }
+
+        &::after {
+            clear: both;
+        }
+    }
+}
+
+@mixin font(
+    $font-family,
+    $path,
+    $formats: (ttf eot otf woff2 woff svg),
+    $webfonts: true
+) {
+    $src: null;
+    $webfont: null;
+
+    $extmods: (
+        eot: "?",
+        svg: "#" + str-replace($font-family, " ", "_"),
+    );
+
+    $formatmods: (
+        otf: "opentype",
+        ttf: "truetype",
+    );
+
+    @each $ext in $formats {
+        $extmod: if(
+            map-has-key($extmods, $ext),
+            $ext + map-get($extmods, $ext),
+            $ext
+        );
+        $formatmod: if(
+            map-has-key($formatmods, $ext),
+            map-get($formatmods, $ext),
+            $ext
+        );
+
+        @if ($ext != "otf" and $ext != "ttf" and $webfonts==true) {
+            $webfont: "webfont/";
+        } @else {
+            $webfont: "/";
+        }
+
+        $src: append(
+            $src,
+            url(quote($path + $webfont + $font-family + "." + $extmod))
+                format(quote($formatmod)),
+            comma
+        );
+    }
+
+    @font-face {
+        font-family: quote($font-family);
+        src: $src;
+    }
+}
+
+@mixin prefixer($prop, $val, $vendors: ()) {
+    @each $vendor in $vendors {
+        -#{$vendor}-#{$prop}: $val;
+    }
+
+    #{$prop}: $val;
+}
+
+@mixin keyframes-prefixer($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin opacity($value) {
+    zoom: 1;
+    $ie-opacity: $value * 100;
+    filter: alpha(opacity=$ie-opacity);
+    opacity: $value;
+}
+
+@mixin centering($fromX: 50%, $fromY: 50%, $x: -50%, $y: -50%) {
+    top: $fromY;
+    #{$left}: if-ltr(#{$fromX}, auto);
+    #{$right}: if-ltr(auto, #{$fromX});
+    @include prefixer(transform, translate($x, $y), webkit moz ms);
+}
+
+@mixin breakpoint($point) {
+    @if $point==lg {
+        @media (min-width: $screen-md-max) {
+            @content;
+        }
+    } @else if $point==md {
+        @media (min-width: $screen-sm-max) and (max-width: $screen-md-max) {
+            @content;
+        }
+    } @else if $point==sm {
+        @media (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {
+            @content;
+        }
+    } @else if $point==xs {
+        @media (max-width: $screen-xs-max) {
+            @content;
+        }
+    }
+}
+
+@mixin breakpoint-between($lower, $upper) {
+    @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper)
+    {
+        $lower-breakpoint: map-get($breakpoints, $lower);
+        $upper-breakpoint: map-get($breakpoints, $upper);
+
+        @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint)) {
+            @content;
+        }
+    } @else {
+        @if (map-has-key($breakpoints, $lower) ==false) {
+            @warn 'Your lower breakpoint was invalid: #{$lower}.';
+        }
+
+        @if (map-has-key($breakpoints, $upper) ==false) {
+            @warn 'Your upper breakpoint was invalid: #{$upper}.';
+        }
+    }
+}
+
+@mixin arrow($direction: $right, $size: rem(8), $color: #555) {
+    width: 0;
+    height: 0;
+
+    @if ($direction==$left) {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-#{$right}: $size solid $color;
+    } @else if ($direction==$right) {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-#{$left}: $size solid $color;
+    } @else if ($direction==down) {
+        border-#{$left}: $size solid transparent;
+        border-#{$right}: $size solid transparent;
+        border-top: $size solid $color;
+    } @else if ($direction==up) {
+        border-#{$left}: $size solid transparent;
+        border-#{$right}: $size solid transparent;
+        border-bottom: $size solid $color;
+    }
+}
+
+@mixin ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin box-shadow(
+    $x: rem(0),
+    $y: rem(0),
+    $blur: rem(0),
+    $spread: rem(0),
+    $color: rgba(0, 0, 0, 0.5),
+    $inset: false
+) {
+    // MAIN BOX SHADOW VARS, CHANGE THEM WHEN INCLUDE IF NECESSARY
+
+    @if $inset==true {
+        @include prefixer(
+            box-shadow,
+            inset $x $y $blur $spread $color,
+            webkit moz ms
+        );
+    } @else {
+        @include prefixer(
+            box-shadow,
+            $x $y $blur $spread $color,
+            webkit moz ms
+        );
+    }
+}
+
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+
+    @if $u1==$u2 and $u1==$u3 and $u1==$u4 {
+        & {
+            font-size: calc(
+                #{$min-font-size} +
+                    #{strip-unit($max-font-size - $min-font-size)} *
+                    ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+            );
+        }
+    }
+}

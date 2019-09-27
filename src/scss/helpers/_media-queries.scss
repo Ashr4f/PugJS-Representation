@@ -1,0 +1,14 @@
+/*  LARGE SCREENS AND ABOVE  */
+@media screen and (min-width: $screen-sm-max) {}
+
+/*  TABLETS AND ABOVE  */
+@media screen and (min-width: $screen-xs-max) {}
+
+/* BOTH PHONES AND TABLETS */
+@media screen and (max-width: $screen-sm-max) {}
+
+/*  TABLETS ONLY  */
+@media screen and (min-width: $screen-xs-max) and (max-width: $screen-sm-max) {}
+
+/* PHONES ONLY */
+@media screen and (max-width: $screen-xs-max) {}

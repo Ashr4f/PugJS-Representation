@@ -1,0 +1,36 @@
+$grid-cols-count: 18;
+$container-max-width: 1124px;
+$container-semi-full-max-width: 1300px;
+
+$screen-xs-max: 768px; //ExtraSmall Devices Max Width
+$screen-sm-max: 991px; //Small Devices Max Width
+$screen-md-max: 1200px; //Medium Devices Max 
+
+$breakpoints: (sm: $screen-xs-max,
+    md: $screen-sm-max,
+    lg: $screen-md-max);
+
+
+// COLORS
+$main-background-color: #FFFFFF;
+$main-font-color: #000000;
+$selection-background-color: #0652DD;
+$selection-color: #FFFFFF;
+$white: #FFFFFF;
+$black: #000000;
+
+
+// FONTS
+$mainFont: "";
+$mainFont_Light: "";
+$mainFont_Regular: "";
+$mainFont_SemiBold: "";
+$mainFont_Bold: "";
+$mainFont_ExtraBold: "";
+
+$secondFont: "";
+$secondFont_Light: "";
+$secondFont_Regular: "";
+$secondFont_SemiBold: "";
+$secondFont_Bold: "";
+$secondFont_ExtraBold: "";
