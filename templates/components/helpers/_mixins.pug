@@ -1,0 +1,11 @@
+//- IMAGES MIXIN
+mixin images(urls, columns)
+    div(class="row image-slider-container")
+        -
+            if (columns > templateColumnsCount || isNaN(columns))
+                columns = templateColumnsCount
+
+        - for (let i = 0; i < urls.length; i++)
+            div(class=`image-container col-${columns ? columns : templateColumnsCount}`)
+                ="\n"
+                img(src=urls[i] alt="slider-image" class="image")
