@@ -100,3 +100,10 @@ exports.default = done => {
     );
     done();
 };
+
+exports.build = series(
+    "copy-server-files",
+    "compile-pug",
+    "compile-sass",
+    "minify-js",
+);
