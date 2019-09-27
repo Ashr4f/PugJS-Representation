@@ -23,7 +23,7 @@ const server = new StaticServer({
 });
 
 task("copy-server-files", done => {
-    src(["./src/!(pug|scss|css|js)**/*", "./src/!(pug|scss|css|js)**"], {
+    src(["./src/!(scss|css|js)**/*", "./src/!(scss|css|js)**"], {
         base: "./src",
     })
         .pipe(plumber())
@@ -33,7 +33,7 @@ task("copy-server-files", done => {
 });
 
 task("compile-pug", done => {
-    src("./src/pug/!(_)*.pug", {base: "./src/pug"})
+    src("./templates/!(_)*.pug", {base: "./templates"})
         .pipe(
             plumber({
                 errorHandler(err) {
@@ -91,8 +91,8 @@ exports.default = done => {
     glr.listen();
     watch(
         [
-            "./src/!(pug|scss|sass|css|js)**/*",
-            "./src/pug/**/*.pug",
+            "./src/!(scss|sass|css|js)**/*",
+            "./templates/**/*.pug",
             "./src/scss/**/*.s(a|c)ss",
             "./src/js/**/*.js",
         ],
