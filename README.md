@@ -7,4 +7,4 @@ This representation-slide is running live on: [Netlify](https://pug-js.netlify.c
 
 ### Usage (for development purpose only):
 
-Clone the project and run `npx gulp` to run it.
+Clone the project and run `npx gulp` to run it on [http://localhost:1337](http://localhost:1337) (Default port).
