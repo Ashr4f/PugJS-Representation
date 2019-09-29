@@ -1,9 +1,8 @@
 @charset "UTF-8";
 
 // LOAD FONTS
-/* 
 // FONTNAME
-@include font("font-name", "./path/to/folder", ttf eot woff2 woff svg); */
+@include font("Roboto-Regular", "../fonts/Roboto", ttf, false);
 
 *::selection {
     background: $selection-background-color;
@@ -19,12 +18,12 @@ html,
 body {
     height: 100%;
     max-height: 100%;
+    overflow: hidden;
 }
 
 html {
     position: relative;
     font-size: 16px;
-    overflow-x: hidden;
 }
 
 body {
@@ -49,6 +48,14 @@ button {
     -webkit-tap-highlight-color: rgba($black, 0);
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
+}
+
+button {
+    background: transparent;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
 }
 
 ul,
@@ -93,9 +100,14 @@ h6 {
 }
 
 a {
-    display: block;
     text-decoration: none;
-    color: $black;
+    color: rgba(#575d84, 0.5);
+    transition: color 0.35s ease-in-out;
+
+    &:hover {
+        text-decoration: underline;
+        color: #575d84;
+    }
 }
 
 .no-select,
@@ -243,4 +255,20 @@ img {
     .lg-float-right {
         float: #{$right};
     }
+}
+
+.full-height {
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.hundred-vh-height {
+    height: 100vh;
+}
+
+.hundred-vw-width {
+    width: 100vh;
 }
