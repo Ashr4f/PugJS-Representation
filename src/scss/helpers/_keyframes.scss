@@ -1,0 +1,35 @@
+@keyframes show-slide {
+    0% {
+        left: 100vw;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes hide-slide {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: -100vw;
+    }
+}
+
+@keyframes show-slide-backward {
+    0% {
+        left: -100vw;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes hide-slide-backward {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 100vw;
+    }
+}
