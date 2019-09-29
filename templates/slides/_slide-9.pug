@@ -1,0 +1,21 @@
+-
+    const codeBlock7 = `
+    div.container
+        p(style="color: red;") I'm red
+        p(style={"color": "red"}, class="test") I'm red
+    `;
+
+    const codeBlock8 = `
+    <div class="container">
+        <p style="color: red;">I'm red</p>
+        <p style="color: red;" class="test">I'm red</p>
+    </div>
+    `;
+
++paper("Attributes")
+    div(class="paper-content")
+        div(class="paper-content-text") To give HTML attribute to a Pug tag you simply write the tags next to the tag between parantheses
+        div For example (in Pug):
+            +codeHighlight(true, codeBlock7)
+        div Generates (in HTML):
+            +codeHighlight(true, codeBlock8)
