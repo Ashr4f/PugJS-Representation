@@ -1,0 +1,29 @@
+-
+    const codeBlock14 = `
+    - const myTable = ["First", "Second", "Third"]
+
+    - for (let i = 0; i < myTable.length; i++)
+        p= myTable[i]
+
+    each item in myTable
+        p= \`\${item} from each\`
+    `;
+
+    const codeBlock15 = `
+    <p>First</p>
+    <p>Second</p>
+    <p>Third</p>
+
+    <p>First from each</p>
+    <p>Second from each</p>
+    <p>Third from each</p>
+    `;
+
++paper("Iteration")
+    div(class="paper-content")
+        div(class="paper-content-text").
+            You can write inline JavaScript into Pug, such as functions, variables and etc...
+        div For example (in Pug):
+            +codeHighlight(true, codeBlock14)
+        div Generates (in HTML):
+            +codeHighlight(true, codeBlock15)
