@@ -1,0 +1,26 @@
+-
+    const codeBlock20 = `
+    //- father.pug
+    p Text from the father
+    `;
+
+    const codeBlock21 = `
+    //- child.pug (compiled)
+    extends ./father.pug
+    `;
+
+    const codeBlock22 = `
+    <p>Text from the father</p>
+    `;
+
++paper("Inhertiance")
+    div(class="paper-content")
+        div(class="paper-content-text").
+            You can extend Pug files and pass inheritances from template to another
+            #[br]#[br]
+            #[b Note:] Declaration of template inheritance ("extends") should be the first thing in the file and there can only be one extends statement per file.
+        div For example (in Pug):
+            +codeHighlight(true, codeBlock20)
+            +codeHighlight(true, codeBlock21)
+        div Generates (in HTML):
+            +codeHighlight(true, codeBlock22)
