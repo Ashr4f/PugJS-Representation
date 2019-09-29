@@ -1,0 +1,27 @@
+-
+    const codeBlock1 = `npm install -g pug-cli`;
+
+    const codeBlock2 = `pug -w ./ -o ./html -P`;
+
++paper("Installation & Getting started")
+    div(class="paper-content")
+
+        div(class="paper-content-text") To install
+            +codeHighlight(false, `pug`)
+            | CLI globally simply run
+            +codeHighlight(false, codeBlock1)
+
+        div(class="paper-content-text") 
+            | To watch and compile a Pug file use
+            +codeHighlight(false, codeBlock2) 
+            |  in the terminal
+
+        div(class="paper-content-text") 
+            | To explain the flags above
+            +codeHighlight(false, `-w`) 
+            |  stands for "Watch", 
+            +codeHighlight(false, `-o`) 
+            |  means output to ->, 
+            |  and 
+            +codeHighlight(false, `-P`) 
+            |  stands for "Pretty", compile pretty HTML output
