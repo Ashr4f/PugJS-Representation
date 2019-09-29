@@ -1,0 +1,20 @@
+-
+    const codeBlock12 = `
+    - let myVar = "Text from JavaScript variable";
+    p= myVar
+    `;
+
+    const codeBlock13 = `
+    <p>Text from JavaScript variable</p>
+    `;
+
++paper("JavaScript Inlining")
+    div(class="paper-content")
+        div(class="paper-content-text").
+            You can write inline JavaScript into Pug, such as functions, variables and etc...
+            #[br]
+            #[b Note:] Must write a dash before writing the inline code as shown in the example below
+        div For example (in Pug):
+            +codeHighlight(true, codeBlock12)
+        div Generates (in HTML):
+            +codeHighlight(true, codeBlock13)
