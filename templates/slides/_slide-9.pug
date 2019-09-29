@@ -1,0 +1,21 @@
+-
+    const codeBlock5 = `
+    // THIS COMMENT IS PUBLIC (VISIBLE AS HTML COMMENT)
+    div.container
+
+    //- THIS COMMENT IS PRIVATE (NOT VISIBLE IN HTML)
+    div.container
+    `;
+
+    const codeBlock6 = `
+    <!--THIS COMMENT IS PUBLIC (VISIBLE AS HTML COMMENT)-->
+    <div class="container"></div>
+    <div class="container"></div>
+    `;
+
++paper("Comments")
+    div(class="paper-content")
+        div For example (in Pug):
+            +codeHighlight(true, codeBlock5)
+        div Generates (in HTML):
+            +codeHighlight(true, codeBlock6)
