@@ -217,3 +217,21 @@
         }
     }
 }
+
+@mixin paginate-button-icons($angle, $x: 0, $y: 0) {
+    i:first-child {
+        @include prefixer(
+            transform,
+            translate($x, $y) rotate($angle),
+            webkit moz ms
+        );
+    }
+
+    i:last-child {
+        @include prefixer(
+            transform,
+            translate($x, $y) rotate(-$angle),
+            webkit moz ms
+        );
+    }
+}
