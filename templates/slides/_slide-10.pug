@@ -1,0 +1,28 @@
+-
+    const codeBlock9 = `
+    //- another-file.pug
+    p I'm from another pug template
+    `;
+
+    const codeBlock10 = `
+    //- index.pug
+    div
+        include ./another-file.pug
+        p I'm from index template
+    `;
+
+    const codeBlock11 = `
+    <div>
+        <p>I'm from another pug template</p>
+        <p>I'm from index template</p>
+    </div>
+    `;
+
++paper("Include")
+    div(class="paper-content")
+        div(class="paper-content-text") Including files in Pug is similar to the other languages include
+        div For example (in Pug):
+            +codeHighlight(true, codeBlock9)
+            +codeHighlight(true, codeBlock10)
+        div Generates (in HTML):
+            +codeHighlight(true, codeBlock11)
