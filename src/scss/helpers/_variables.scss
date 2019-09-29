@@ -4,24 +4,24 @@ $container-semi-full-max-width: 1300px;
 
 $screen-xs-max: 768px; //ExtraSmall Devices Max Width
 $screen-sm-max: 991px; //Small Devices Max Width
-$screen-md-max: 1200px; //Medium Devices Max 
+$screen-md-max: 1200px; //Medium Devices Max
 
-$breakpoints: (sm: $screen-xs-max,
+$breakpoints: (
+    sm: $screen-xs-max,
     md: $screen-sm-max,
-    lg: $screen-md-max);
-
+    lg: $screen-md-max,
+);
 
 // COLORS
-$main-background-color: #FFFFFF;
+$main-background-color: #dcdde1;
 $main-font-color: #000000;
-$selection-background-color: #0652DD;
-$selection-color: #FFFFFF;
-$white: #FFFFFF;
+$selection-background-color: #0652dd;
+$selection-color: #ffffff;
+$white: #ffffff;
 $black: #000000;
 
-
 // FONTS
-$mainFont: "";
+$mainFont: "Roboto-Regular";
 $mainFont_Light: "";
 $mainFont_Regular: "";
 $mainFont_SemiBold: "";
@@ -34,3 +34,10 @@ $secondFont_Regular: "";
 $secondFont_SemiBold: "";
 $secondFont_Bold: "";
 $secondFont_ExtraBold: "";
+
+// SLIDER BUTTONS
+$icon-size: calc(3vmin + 0.5rem);
+$icon-thickness: 5px;
+$icon-rotate-angle: 40deg;
+$icon-rotate-angle-hover: 30deg;
+$icon-rotate-angle-active: 25deg;
