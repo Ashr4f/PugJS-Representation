@@ -1,0 +1,21 @@
+-
+    const SOURCES = [
+        {
+            "link": "https://pugjs.org"
+        },
+        {
+            "link": "https://devhints.io/pug"
+        },
+        {
+            "link": "https://stackshare.io/pug"
+        },
+        {
+            "link": "https://developer.ibm.com/node/2014/11/11/compare-javascript-templates-jade-mustache-dust/"
+        }
+    ]
+
++paper("Sources")
+    div(class="paper-content")
+        each source in SOURCES
+            div(class="sources-link-container")
+                a(href=source.link, class="sources-link break-long-words") #{source.link} #[br]
