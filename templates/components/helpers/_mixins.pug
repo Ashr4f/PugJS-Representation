@@ -1,11 +1,44 @@
 //- IMAGES MIXIN
 mixin images(urls, columns)
-    div(class="row image-slider-container")
-        -
-            if (columns > templateColumnsCount || isNaN(columns))
-                columns = templateColumnsCount
+    -
+        if (columns > templateColumnsCount || isNaN(columns))
+            columns = templateColumnsCount
 
-        - for (let i = 0; i < urls.length; i++)
-            div(class=`image-container col-${columns ? columns : templateColumnsCount}`)
-                ="\n"
-                img(src=urls[i] alt="slider-image" class="image")
+    - for (let i = 0; i < urls.length; i++)
+        div(class=`image-container col-${columns ? columns : templateColumnsCount}`)
+            ="\n"
+            img(src=urls[i] alt="slider-image" class="image")
+
+//- SLIDER PAPER
+mixin paper(title)
+    div(class="row slider-paper-container")
+        div(class="paper")
+            h3(class="paper-title") #{title}
+            block
+
+
+//- SLIDER PAPER LIST
+mixin list(title, list)
+    +paper(title)
+        ul(class="list")
+            each item in list
+                li(class="list-item")!= item.text
+
+//- SLIDER EXPLAINATION CODE EXAMPLE
+mixin codeHighlight(isBlock, code)
+    block
+    div(class=`${isBlock ? "highlight-code-block" : "highlight-code-inline"}`)
+        pre #{code}
+
+
+
+//- SLIDER BUTTON MIXIN
+mixin sliderButton(direction, backgroundColor, color)
+    -
+        if(!direction)
+            direction = "left"
+
+    button(
+        class=`button slider-button paginate-${direction} float-${direction}` 
+            type="button"
+        ) #[i] #[i]
