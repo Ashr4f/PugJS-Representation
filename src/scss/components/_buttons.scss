@@ -1,0 +1,110 @@
+// SLIDER PAGINATE BUTTONS
+
+.slider-buttons-container {
+    position: fixed;
+    left: 0;
+    top: calc(50% - 16px);
+    width: 100%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 10;
+    .slider-button {
+        margin: 10px;
+        width: $icon-size;
+        height: $icon-size;
+        min-width: rem(35);
+        min-height: rem(35);
+        transform: translate3d(0, 0, 0);
+        filter: drop-shadow(0 2px 0px rgba(0, 0, 0, 0.2));
+        pointer-events: all;
+
+        &::before {
+            position: absolute;
+            content: "";
+            height: 160%;
+            width: 185%;
+            background-color: transparent;
+            top: 50%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: background-color 0.25s ease-in-out;
+        }
+
+        &:hover {
+            &::before {
+                background-color: rgba(#575d84, 0.75);
+            }
+        }
+
+        i {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            width: $icon-size;
+            height: $icon-thickness;
+            border-radius: $icon-thickness / 2;
+            background: #fff;
+
+            transition: all 0.15s ease;
+        }
+
+        &.paginate-left {
+            left: 0;
+
+            i {
+                transform-origin: 0% 50%;
+            }
+
+            @include paginate-button-icons($icon-rotate-angle, -50%, 50%);
+
+            &:hover {
+                @include paginate-button-icons(
+                    $icon-rotate-angle-hover,
+                    -50%,
+                    50%
+                );
+            }
+
+            &:active {
+                @include paginate-button-icons(
+                    $icon-rotate-angle-active,
+                    -50%,
+                    50%
+                );
+            }
+        }
+
+        &.paginate-right {
+            right: 0;
+
+            &::before {
+                left: auto;
+                right: 35%;
+                transform: translate(50%, -50%);
+            }
+
+            i {
+                transform-origin: 100% 50%;
+            }
+
+            @include paginate-button-icons($icon-rotate-angle, -50%, 50%);
+
+            &:hover {
+                @include paginate-button-icons(
+                    $icon-rotate-angle-hover,
+                    -50%,
+                    50%
+                );
+            }
+
+            &:active {
+                @include paginate-button-icons(
+                    $icon-rotate-angle-active,
+                    -50%,
+                    50%
+                );
+            }
+        }
+    }
+}
