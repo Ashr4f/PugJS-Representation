@@ -23,12 +23,18 @@ const server = new StaticServer({
 });
 
 task("copy-server-files", done => {
-    src(["./src/!(scss|css|js)**/*", "./src/!(scss|css|js)**"], {
-        base: "./src",
-    })
+    src(
+        [
+            "./src/!(scss|css|js)**/*",
+            "./src/!(scss|css|js)**/**",
+            "./src/!(scss|css|js)**",
+        ],
+        {
+            base: "./src",
+        },
+    )
         .pipe(plumber())
-        .pipe(dest("./dist/"))
-        .pipe(glr());
+        .pipe(dest("./dist/"));
     done();
 });
 
