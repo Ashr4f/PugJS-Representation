@@ -1,0 +1,20 @@
+-
+    const codeBlock18 = `
+    mixin generateLink(hyperRef, text, className)
+        a(href=hyperRef, class=className) !{text}
+
+    +generateLink("#", "Link Text", "link")
+    `;
+
+    const codeBlock19 = `
+    <a href="#" class="link">Link Text</a>
+    `;
+
++paper("Mixins")
+    div(class="paper-content")
+        div(class="paper-content-text").
+            You can write mixins to use later in your Pug file, as shown below
+        div For example (in Pug):
+            +codeHighlight(true, codeBlock18)
+        div Generates (in HTML):
+            +codeHighlight(true, codeBlock19)
