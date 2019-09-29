@@ -28,7 +28,7 @@
     const SLIDERS = document.querySelectorAll(".sliders-container .slider");
     const SLIDER_PAGINATE_BUTTONS = document.querySelectorAll(".slider-button");
 
-    let currentSlide = SLIDERS.length - 1;
+    let currentSlide = 0;
 
     addClass(SLIDERS[currentSlide], "current");
 
