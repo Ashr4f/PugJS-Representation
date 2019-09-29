@@ -1,0 +1,28 @@
+-
+    const codeBlock16 = `
+    - let myString = "string with <em>Italic</em> font"
+
+    //- Escaped
+    p #{myString}
+
+    //- Unescaped
+    p !{myString}
+
+    //- Tag
+    p !{myString} #[b Bold text]
+    `;
+
+    const codeBlock17 = `
+    <p>string with &lt;em&gt;Italic&lt;/em&gt; font</p>
+    <p>string with <em>Italic</em> font</p>
+    <p>string with <em>Italic</em> font <b>Bold text</b></p>
+    `;
+
++paper("Interpolation")
+    div(class="paper-content")
+        div(class="paper-content-text").
+            You can write inline JavaScript into Pug, such as functions, variables and etc...
+        div For example (in Pug):
+            +codeHighlight(true, codeBlock16)
+        div Generates (in HTML):
+            +codeHighlight(true, codeBlock17)
