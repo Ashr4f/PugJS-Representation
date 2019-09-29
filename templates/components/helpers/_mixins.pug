@@ -13,7 +13,8 @@ mixin images(urls, columns)
 mixin paper(title)
     div(class="row slider-paper-container")
         div(class="paper")
-            h3(class="paper-title") #{title}
+            - if(title)
+                h3(class="paper-title") #{title} 
             block
 
 
