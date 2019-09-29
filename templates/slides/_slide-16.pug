@@ -1,0 +1,30 @@
+-
+    const codeBlock23 = `
+    //- father.pug
+    p Text from the father
+        block mySon
+            span He's 9 years-old
+    `;
+
+    const codeBlock24 = `
+    //- child.pug (compiled)
+    extends ./father.pug
+        block mySon
+            span No father, I just celebrated my 10 years yesternight
+    `;
+
+    const codeBlock25 = `
+    <p> Text from the father
+        <span>No father, I just celebrated my 10 years yesternight</span>
+    </p>
+    `;
+
++paper("Block")
+    div(class="paper-content")
+        div(class="paper-content-text").
+            You can extend Pug files and pass inheritances from template to another
+        div For example (in Pug):
+            +codeHighlight(true, codeBlock23)
+            +codeHighlight(true, codeBlock24)
+        div Generates (in HTML):
+            +codeHighlight(true, codeBlock25)
