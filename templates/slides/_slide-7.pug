@@ -1,0 +1,20 @@
+-
+    const codeBlock3 = `
+    p Text here
+    p.my-text Text here
+    <p>Yes!, HTML code is valid</p>
+    `;
+
+    const codeBlock4 = `
+    <p>Text here</p>
+    <p class="my-text">Text here</p>
+    <p>Yes!, HTML code is valid</p>
+    `;
+
++paper("Syntax")
+    div(class="paper-content")
+
+        div For example (in Pug):
+            +codeHighlight(true, codeBlock3)
+        div Generates (in HTML):
+            +codeHighlight(true, codeBlock4)
