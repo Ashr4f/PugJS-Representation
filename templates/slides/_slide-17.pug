@@ -1,0 +1,24 @@
+-
+    const codeBlock26 = `
+    - const friends = 10
+    case friends
+        when 0
+            p you have no friends
+        when 1
+            p you have a friend
+        default
+            p you have #{friends} friends
+    `;
+
+    const codeBlock27 = `
+    <p>you have 10 friends</p>
+    `;
+
++paper("Case")
+    div(class="paper-content")
+        div(class="paper-content-text").
+            The case statement is a shorthand for JavaScript’s switch statement
+        div For example (in Pug):
+            +codeHighlight(true, codeBlock26)
+        div Generates (in HTML):
+            +codeHighlight(true, codeBlock27)
