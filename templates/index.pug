@@ -1,5 +1,26 @@
 extends ./extends/_main.pug
 
 block content
-    div.content-container
-        include ./slides/_slides
+    div(class="container")
+        div(class="content-container")
+            div(class="sliders-container")
+                div(class="slider slider-1")
+                    include ./slides/_slide-1
+                div(class="slider slider-2")
+                    include ./slides/_slide-2
+                div(class="slider slider-3")
+                    include ./slides/_slide-3
+                div(class="slider slider-4")
+                    include ./slides/_slide-4
+                div(class="slider slider-5")
+                    include ./slides/_slide-5
+                div(class="slider slider-6")
+                    include ./slides/_slide-6
+                div(class="slider slider-7")
+                    include ./slides/_slide-7
+                div(class="slider slider-8")
+                    include ./slides/_slide-8
+
+            div(class="slider-buttons-container clearfix")
+                include ./components/buttons/_slider-buttons
+            include ./slides/_counter
