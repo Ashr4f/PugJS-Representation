@@ -90,11 +90,19 @@ task("minify-js", done => {
     done();
 });
 
+const buildSeries = series(
+    "copy-server-files",
+    "compile-pug",
+    "compile-sass",
+    "minify-js",
+);
+
 exports.default = done => {
     server.start(() => {
         console.log("Server listening to port", server.port);
     });
     glr.listen();
+    buildSeries();
     watch(
         [
             "./src/!(scss|sass|css|js)**/*",
@@ -107,9 +115,4 @@ exports.default = done => {
     done();
 };
 
-exports.build = series(
-    "copy-server-files",
-    "compile-pug",
-    "compile-sass",
-    "minify-js",
-);
+exports.build = buildSeries;
